@@ -13,13 +13,23 @@ public class Server {
         System.out.println("正在等待目标......");
         Socket s = ss.accept();
 
+        //链接成功提示
         System.out.println("目标已连接");
-        System.out.println("来自" + s.getInetAddress() + "的用户发送的消息如下: ");
+        System.out.println("来自" + s.getInetAddress().getHostName() + "的用户发送的消息如下: ");
+
+
         //获取输入流,并读取信息
-        BufferedReader bf = new BufferedReader(new InputStreamReader(s.getInputStream()));
-        int b;
-        while((b = bf.read()) != -1){
-            System.out.print((char) b);
+        BufferedReader bf = null;
+        bf = new BufferedReader(new InputStreamReader(s.getInputStream()));
+
+        //循环体，等待客户端发送信息
+        boolean flag = true;
+        while (flag) {
+            int b;
+            while((b = bf.read()) != -1){
+                System.out.print((char) b);
+            }
+            System.out.println();
         }
 
         s.close();
