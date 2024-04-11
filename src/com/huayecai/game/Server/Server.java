@@ -1,11 +1,10 @@
-package com.huayecai.game;
+package com.huayecai.game.Server;
 import java.io.*;
 import java.net.*;
-import java.awt.*;
 
 
 //TCP协议的Server段
-public class Test {
+public class Server {
     public static void main(String[] args) throws IOException {
         //创建套接字，监听本机5000端口
         ServerSocket ss = new ServerSocket(5000);
